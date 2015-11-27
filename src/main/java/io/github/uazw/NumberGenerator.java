@@ -7,8 +7,13 @@ import java.util.stream.Collectors;
 
 public class NumberGenerator {
 
-    public static String generate() {
-        Random random = new Random();
+    private final Random random;
+
+    public NumberGenerator(Random random) {
+        this.random = random;
+    }
+
+    public String generate() {
         Set<Integer> integers = new LinkedHashSet<>(4);
         do {
             integers.add(random.nextInt(10));

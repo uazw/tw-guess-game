@@ -2,7 +2,7 @@ package io.github.uazw;
 
 public class NumberComparator {
 
-    public static String compare(String firstNumber, String secondNumber) {
+    public String compare(String firstNumber, String secondNumber) {
         int aCount = 0;
         int sameNumber = 0;
         for (int i = 0; i < secondNumber.length(); i++) {

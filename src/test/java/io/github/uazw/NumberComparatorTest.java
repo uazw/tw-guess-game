@@ -1,5 +1,6 @@
 package io.github.uazw;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -7,12 +8,19 @@ import static org.junit.Assert.assertThat;
 
 public class NumberComparatorTest {
 
+    private NumberComparator comparator;
+
+    @Before
+    public void setUp() {
+        comparator = new NumberComparator();
+    }
+    
     @Test
     public void should_return_4A0B_when_given_the_same_number() {
         String firstNumber = "1234";
         String secondNumber = "1234";
 
-        String result = NumberComparator.compare(firstNumber, secondNumber);
+        String result = comparator.compare(firstNumber, secondNumber);
 
         assertThat(result, is("4A0B"));
     }
@@ -22,7 +30,7 @@ public class NumberComparatorTest {
         String firstNumber = "1234";
         String secondNumber = "5678";
 
-        String result = NumberComparator.compare(firstNumber, secondNumber);
+        String result = comparator.compare(firstNumber, secondNumber);
 
         assertThat(result, is("0A0B"));
     }
@@ -32,7 +40,7 @@ public class NumberComparatorTest {
         String firstNumber = "1234";
         String secondNUmber = "4321";
 
-        String result = NumberComparator.compare(firstNumber, secondNUmber);
+        String result = comparator.compare(firstNumber, secondNUmber);
 
         assertThat(result, is("0A4B"));
     }
@@ -42,7 +50,7 @@ public class NumberComparatorTest {
         String firstNumber = "1234";
         String secondNumber = "1243";
 
-        String result = NumberComparator.compare(firstNumber, secondNumber);
+        String result = comparator.compare(firstNumber, secondNumber);
 
         assertThat(result, is("2A2B"));
     }
