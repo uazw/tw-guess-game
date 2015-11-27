@@ -10,6 +10,7 @@ public class GuessGame {
     private final PrintStream output;
     private final NumberGenerator generator;
     private String number;
+    private int restRoundTime = 6;
 
     public GuessGame(InputStream input, PrintStream output,
                      NumberGenerator generator, NumberComparator comparator) {
@@ -20,8 +21,17 @@ public class GuessGame {
         this.comparator = comparator;
     }
 
+
+
     public void start() {
         number =  generator.generate();
         output.println("Welcome!");
+        do {
+            output.println("Please input your number(" + restRoundTime +"):");
+            Round round = new Round(number, comparator, restRoundTime == 1);
+            output.println(round.run(input.nextLine()));
+            restRoundTime -= 1;
+            if (round.isSuccess()) break;
+        } while (restRoundTime > 0);
     }
 }
